@@ -22,8 +22,8 @@ export default function App() {
     color: randomColor(),
   });
   const [messages, setMessages] = useState([]);
-  const [drone] = useState(new window.Scaledrone("0k2PyKmHZ7C4eCCj", { data: member }));
-
+  const [drone] = useState(new window.Scaledrone("Lzqy8p3ryiReuF8Q", { data: member }));
+  
   drone.on('open', error => {
     if (error) {return console.error(error);}
     const memberWithId = {...member, id: drone.clientId};
@@ -31,9 +31,11 @@ export default function App() {
   });
   
   const room = drone.subscribe("observable-room");
-  
-  room.on('data', (data, member) => {
-    setMessages(messages => [...messages, {member, text: data}]);
+
+  room.on('message', message => {
+    const {data, member} = message;
+    const time = Date.now();
+    setMessages(messages => [...messages, {member, text: data, time}]);
   });
 
   const onSendMessage = (message) => {

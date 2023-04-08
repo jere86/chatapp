@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Input({ onSendMessage }) {
+export default function Input({ onSendMessage, timeseting }) {
   const [text, setText] = useState("");
 
   const onChange = (e) => {
@@ -26,7 +26,7 @@ export default function Input({ onSendMessage }) {
       <button 
         type="submit"
         className="send-button">
-          Send
+          SEND
       </button>
     </form>
   );

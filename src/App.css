@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: monospace;
+  user-select: none;
 }
 
 body {
@@ -34,8 +35,8 @@ body {
   height: 90%;
   max-width: 600px;
   border-radius: 10px;
-  padding: 20px 10px;
-  background-color: rgba(218, 165, 32, 0.2);
+  padding: 20px 15px;
+  background-color: rgba(218, 165, 32, 0.5);
 }
 
 .send-container {
@@ -65,7 +66,6 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  text-transform: uppercase;
   font-weight: bolder;
   color: azure;
 }
@@ -74,64 +74,71 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-bottom: 5px;
 }
 
 .others-messages {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  margin-bottom: 5px;
 }
 
-.my {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+.message {
   max-width: 70%;
   color: azure;
   overflow-wrap: break-word;
-  text-align: end;
-}
-
-.others {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  max-width: 70%;
-  color: azure;
-  overflow-wrap: break-word;
-  text-align: start;
-}
-
-.username {
-  font-size: 1.1em;
-  font-weight: bold;
   margin: 0px 5px;
+}
+
+.my-username {
+  text-align: end;
+  font-size: .8em;
+  font-weight: bold;
+  margin: 0px 3px;
+}
+
+.others-username {
+  font-size: .8em;
+  font-weight: bold;
+  margin: 0px 3px;
 }
 
 .my-text {
-  width: fit-content;
+  width: max-content;
   max-width: 100%;
   background-color: rgba(34, 139, 34, 0.6);
-  margin: 5px 5px 5px auto;
+  margin: 2px 0px 7px auto;
   padding: 5px;
   border-radius: 5px;
-  text-align: start;
 }
 
 .others-text {
-  width: fit-content;
+  width: max-content;
   max-width: 100%;
   background-color: rgba(128, 128, 128, 0.6);
-  margin: 5px;
+  margin: 2px auto 5px 0px;
   padding: 5px;
   border-radius: 5px;
 }
 
+.text {
+  margin-right: 5px;
+}
+
+.time {
+  text-align: end;
+  font-size: 0.7rem;
+  margin: 2px 0px -3px 5px;
+}
+
 .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: azure;
+  font-size: 1.3rem;
+  font-weight: bold;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin: 0px 5px;
+  margin-top: 5px;
 }
