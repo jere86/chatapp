@@ -1,16 +1,14 @@
 import uuid from "react-uuid";
 
 export default function Messages({messages, currentMember}) {
-  
   const formatTime = (time) => {
-    return new Intl.DateTimeFormat('hr-HR', 
-    {hour: '2-digit', minute: '2-digit'}).format(new Date(time));
+    return new Intl.DateTimeFormat('hr-HR', {hour: '2-digit', minute: '2-digit'}).format(new Date(time));
   }
   
   const renderMessage = (message) => {
     const {member, text, time} = message;
-    const messageFromMe = member.id === currentMember.id;
-    const className = messageFromMe ? "my" : "others";
+    const myMessage = member.clientData.username === currentMember.username;
+    const className = myMessage ? "my" : "others";
 
     return (
       <div className={`${className}-messages`} key={uuid()}>
@@ -27,10 +25,8 @@ export default function Messages({messages, currentMember}) {
             </div>
           </div>
         </div>
-        <div 
-          className="avatar"
-          style={{backgroundColor: member.clientData.color}}>
-            {member.clientData.username.charAt(0).toUpperCase()}
+        <div className="avatar" style={{backgroundColor: member.clientData.color}}>
+          {member.clientData.username.charAt(0).toUpperCase()}
         </div>
       </div>
     );
@@ -39,7 +35,6 @@ export default function Messages({messages, currentMember}) {
   return (
     <div className="message-container">
       {messages.map(message => renderMessage(message))}
-      <div className="anchor"></div>
     </div>
   );
 }

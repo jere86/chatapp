@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Input({ onSendMessage, timeseting }) {
+export default function Input({ onSendMessage }) {
   const [text, setText] = useState("");
 
   const onChange = (e) => {
