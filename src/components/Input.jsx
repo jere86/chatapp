@@ -20,6 +20,7 @@ export default function Input({ onSendMessage }) {
       <input
         type="text"
         className="message-input"
+        spellCheck="false"
         value={text}
         onChange={onChange}
       />

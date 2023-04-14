@@ -1,26 +1,31 @@
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../context/appContext";
+import { CirclePicker } from "react-color";
 import routes from "../data/routes";
-
-function randomColor() {
-    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
 
 export default function Login() {
     const { memberSet } = useContext(AppContext);
     const [username, setUsername] = useState("");
+    const [color, setColor] = useState("");
     const navigate = useNavigate();
 
-    const onChange = (e) => {
-        if (e.target.value !== "") {
-          setUsername(e.target.value);
-        }
+    const usernameSet = (e) => {
+        setUsername(e.target.value);
+    }
+
+    const colorSet = (e) => {
+        const selectedColor = e.hex;
+        setColor(selectedColor);
     }
 
     const onSubmit = (e) => {
-        e.preventDefault();
-        memberSet(username, randomColor());
+        if (username === "" || color === "") {
+            alert("Popunite sva polja!");
+            return
+        }
+        // e.preventDefault();
+        memberSet(username, color);
         navigate(routes.chat);
     }
     
@@ -31,15 +36,10 @@ export default function Login() {
                 spellCheck="false"
                 type="text"
                 className="login-input"
-                onChange={onChange}
+                onChange={usernameSet}
             />
             <label>COLOR</label>
-            <input
-                spellCheck="false"
-                type="text"
-                className="login-input"
-                onChange={onChange}
-            />
+            <CirclePicker onChange={colorSet}/>
             <button 
                 type="submit"
                 className="login-button">
