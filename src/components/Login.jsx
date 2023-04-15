@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../context/appContext";
+import { useNavigate } from "react-router-dom";
 import { CirclePicker } from "react-color";
 import routes from "../data/routes";
 
 export default function Login() {
-    const { memberSet } = useContext(AppContext);
+    const { setMember, drone } = useContext(AppContext);
     const [username, setUsername] = useState("");
     const [color, setColor] = useState("");
     const navigate = useNavigate();
@@ -15,17 +15,16 @@ export default function Login() {
     }
 
     const colorSet = (e) => {
-        const selectedColor = e.hex;
-        setColor(selectedColor);
+        setColor(e.hex);
     }
 
     const onSubmit = (e) => {
+        e.preventDefault();
         if (username === "" || color === "") {
             alert("Popunite sva polja!");
             return
         }
-        // e.preventDefault();
-        memberSet(username, color);
+        setMember({username: username, color: color, id:drone.clientId});
         navigate(routes.chat);
     }
     

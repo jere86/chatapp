@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Input({ onSendMessage }) {
   const [text, setText] = useState("");
@@ -9,10 +9,10 @@ export default function Input({ onSendMessage }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setText("");
     if (text !== "") {
       onSendMessage(text);
     }
-    setText("");
   }
 
   return (

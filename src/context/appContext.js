@@ -5,16 +5,14 @@ export const AppContext = createContext();
 export function AppContextProvider(Component) {
   return function Context(props) {
     const [member, setMember] = useState({});
-
-    const memberSet = (x, y, z) => {
-      setMember({username: x, color: y, id: z});
-    }
+    const drone = new window.Scaledrone("Lzqy8p3ryiReuF8Q", {data: member});
 
     return (
       <AppContext.Provider
         value={{
           member,
-          memberSet,
+          setMember,
+          drone,
         }}
       >
         <Component {...props} />

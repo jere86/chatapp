@@ -9,12 +9,12 @@ export default function Messages({messages, currentMember}) {
   }, [messages]);
 
   const formatTime = (time) => {
-    return new Intl.DateTimeFormat('hr-HR', {hour: '2-digit', minute: '2-digit'}).format(new Date(time));
+    return new Intl.DateTimeFormat("hr-HR", {hour: "2-digit", minute: "2-digit"}).format(new Date(time * 1000));
   }
   
   const renderMessage = (message) => {
-    const {member, text, time} = message;
-    const myMessage = member.id === currentMember.id;
+    const {member, text, timestamp} = message;
+    const myMessage = member.clientData.id === currentMember.id;
     const className = myMessage ? "my" : "others";
 
     return (
@@ -28,7 +28,7 @@ export default function Messages({messages, currentMember}) {
               {text}
             </div>
             <div className="time">
-              {formatTime(time)}
+              {formatTime(timestamp)}
             </div>
           </div>
         </div>

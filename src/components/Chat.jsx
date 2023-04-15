@@ -1,27 +1,20 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/appContext";
-import Input from './Input';
-import Messages from './Messages';
+import Input from "./Input";
+import Messages from "./Messages";
 import routes from "../data/routes";
 
 export default function Chat() {
-    const { member, memberSet } = useContext(AppContext);
-    const [drone] = useState(new window.Scaledrone("Lzqy8p3ryiReuF8Q", { data: member }));
+    const { member, setMember, drone } = useContext(AppContext);
     const [messages, setMessages] = useState([]);
     const navigate = useNavigate();
-
-    drone.on('open', error => {
-        if (error) {return console.error(error)};
-        memberSet(member.username, member.color, drone.clientId);
-    });
-
+    
     const room = drone.subscribe("observable-room");
 
-    room.on('message', message => {
-        const {data, member} = message;
-        const time = Date.now();
-        setMessages([...messages, {member, text: data, time}]);
+    room.on("message", message => {
+        const { data, member, timestamp } = message;
+        setMessages([...messages, {member, text: data, timestamp}]);
     });
 
     const onSendMessage = (message) => {
@@ -33,7 +26,7 @@ export default function Chat() {
 
     const logOut = () => {
         navigate(routes.login);
-        memberSet();
+        setMember({});
     }
 
     return (
