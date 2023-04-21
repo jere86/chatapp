@@ -36,6 +36,7 @@ export default function Login() {
                 type="text"
                 className="login-input"
                 onChange={usernameSet}
+                maxLength={15}
             />
             <label>COLOR</label>
             <CirclePicker onChange={colorSet}/>

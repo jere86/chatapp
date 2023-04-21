@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-width: 500px;
+  min-width: 770px;
   height: 100vh;
   background-color: azure;
 }
@@ -63,7 +63,7 @@ label {
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 3px;
-  padding: 5px;
+  padding: 10px;
   margin-top: 15px;
 }
 
@@ -73,6 +73,7 @@ label {
 
 .chat-container {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -80,6 +81,37 @@ label {
   width: 375px;
   height: 80vh;
   min-height: 450px;
+}
+
+.online-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: -180px;
+  top: 50px;
+  width: 158px;
+  height: min-content;
+  border: 3px solid brown;
+  background-color: azure;
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid lightgray;
+}
+
+.user {
+  width: 100%;
+  padding: 3px 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color: azure;
+  font-size: 1.2rem;
 }
 
 .message-container {
