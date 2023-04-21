@@ -105,19 +105,43 @@ label {
   width: 95%;
 }
 
-.message-input {
+.react-emoji {
   border: none;
   background-color: lightgray;
   border-radius: 5px;
-  padding: 5px 20px;
   margin-right: 5px;
-  width: 100%;
-  font-weight: bold;
-  text-align: center;
+  width: 280px;
 }
 
-.message-input:focus {
-  outline: none;
+.react-input-emoji--container {
+  border: none;
+  background-color: lightgray;
+  margin: 0px;
+  border-radius: 0px;
+}
+
+.react-input-emoji--input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  margin: 0px 5px;
+  padding: 2px;
+  color: brown;
+}
+
+.react-input-emoji--button {
+  display: flex;
+  padding-right: 5px;
+  padding-left: 0px;
+}
+
+.react-input-emoji--button svg {
+  height: 18px;
 }
 
 .send-button {

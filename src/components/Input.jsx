@@ -1,32 +1,29 @@
 import { useState } from "react";
+import InputEmoji from 'react-input-emoji'
 
 export default function Input({ onSendMessage }) {
   const [text, setText] = useState("");
 
-  const onChange = (e) => {
-    setText(e.target.value);
-  }
-
   const onSubmit = (e) => {
     e.preventDefault();
-    setText("");
     if (text !== "") {
       onSendMessage(text);
     }
+    setText("");
   }
 
   return (
-    <form className="send-container" onSubmit={onSubmit}>
-      <input
-        type="text"
-        className="message-input"
-        spellCheck="false"
-        value={text}
-        onChange={onChange}
-      />
+    <form className="send-container" onSubmit={onSubmit} spellCheck="false">
+      <InputEmoji
+          value={text}
+          onChange={setText}
+          onEnter={onSubmit}
+          placeholder=""
+        />
       <button 
-        type="submit"
-        className="send-button">
+        type="button"
+        className="send-button"
+        onClick={onSubmit}>
           SEND
       </button>
     </form>
