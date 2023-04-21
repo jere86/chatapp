@@ -1,11 +1,10 @@
 import { useState } from "react";
-import InputEmoji from 'react-input-emoji'
+import InputEmoji from "react-input-emoji";
 
 export default function Input({ onSendMessage }) {
   const [text, setText] = useState("");
 
   const onSubmit = (e) => {
-    e.preventDefault();
     if (text !== "") {
       onSendMessage(text);
     }
