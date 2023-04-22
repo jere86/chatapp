@@ -20,7 +20,7 @@ export default function Chat() {
     });
 
     useEffect(() => {
-        room.on('members', function(members) {
+        room.on("members", members => {
             setOnlineUsers(members);
         });
     }, [messages]);
@@ -41,7 +41,7 @@ export default function Chat() {
     return (
         <div className="chat-container">
             <div className="logout" onClick={logOut}>X</div>
-            <OnlineUsers onlineUsers={onlineUsers} />
+            <OnlineUsers onlineUsers={onlineUsers} currentMember={member} />
             <Messages messages={messages} currentMember={member} />
             <Input onSendMessage={onSendMessage} />
         </div>

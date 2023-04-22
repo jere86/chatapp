@@ -1,16 +1,30 @@
-export default function OnlineUsers({ onlineUsers }) {
+export default function OnlineUsers({ onlineUsers, currentMember }) {
     return (
         <div className="online-users">
-            <h2>Online users</h2>
             {onlineUsers.map(user => {
-                return (
-                    <div 
-                        className="user"
-                        key={user.clientData.id}
-                        style={{backgroundColor: user.clientData.color}}>
-                            {user.clientData.username}
-                    </div>
-                )
+                if (user.clientData.id === currentMember.id) {
+                    return (
+                        <div 
+                            className="user"
+                            key={user.clientData.id}
+                            style={{backgroundColor: user.clientData.color}}>
+                                {user.clientData.username}
+                        </div>
+                    )
+                }
+            })}
+            <h2> </h2>
+            {onlineUsers.map(user => {
+                if (user.clientData.id !== currentMember.id) {
+                    return (
+                        <div 
+                            className="user"
+                            key={user.clientData.id}
+                            style={{backgroundColor: user.clientData.color}}>
+                                {user.clientData.username}
+                        </div>
+                    )
+                }
             })}
         </div>
     )
