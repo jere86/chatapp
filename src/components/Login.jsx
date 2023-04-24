@@ -20,8 +20,11 @@ export default function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (username === "" || color === "") {
-            alert("Popunite sva polja!");
+        if (username === "") {
+            alert("USERNAME!!!");
+            return
+        } else if (color === "") {
+            alert("COLOR!!!");
             return
         }
         setMember({username: username, color: color, id:drone.clientId});
