@@ -12,18 +12,18 @@ export default function Chat() {
     const [onlineUsers, setOnlineUsers] = useState([]);
     const navigate = useNavigate();
     
-    const room = drone.subscribe("observable-room");
-
-    room.on("message", message => {
-        const { data, member, timestamp } = message;
-        setMessages([...messages, {member, text: data, timestamp}]);
-    });
-
     useEffect(() => {
+        const room = drone.subscribe("observable-room");
+
         room.on("members", members => {
             setOnlineUsers(members);
         });
-    }, [messages]);
+
+        room.on("message", message => {
+            const { data, member, timestamp } = message;
+            setMessages([...messages, {member, text: data, timestamp}]);
+        });
+    },[drone, messages]);
 
     const onSendMessage = (message) => {
         drone.publish({

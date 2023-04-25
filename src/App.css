@@ -17,15 +17,16 @@ body {
 }
 
 .login-container {
+  position: relative;
   background-color: rgba(255, 194, 40, 0.4);
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
   height: min-content;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 10px;
-  padding-top: 20px;
-  overflow: hidden;
+  border-radius: 5px;
+  padding: 20px 0px;
 }
 
 label {
@@ -56,15 +57,17 @@ label {
 }
 
 .login-button {
+  position: absolute;
+  bottom: -80px;
   width: 100%;
-  border: none;
   background-color: brown;
+  border: none;
+  border-radius: 5px;
   color: azure;
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 3px;
   padding: 10px;
-  margin-top: 15px;
 }
 
 .login-button:hover {
@@ -92,7 +95,7 @@ label {
   top: 50px;
   width: 158px;
   height: min-content;
-  border: 1px solid rgb(185, 185, 185);
+  border: 1px solid rgba(165, 42, 42, 0.3);
   background-color: azure;
   border-radius: 10px;
   padding: 5px;
@@ -100,14 +103,20 @@ label {
   text-align: center;
 }
 
-h2 {
+.line {
   margin-bottom: 6px;
   width: 80%;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid rgba(165, 42, 42, 0.7);
 }
 
 @keyframes animacija {
   50% {
+    transform: scale(2);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  75% {
     transform: scale(2);
     margin-top: 10px;
     margin-bottom: 20px;
@@ -121,7 +130,7 @@ h2 {
 }
 
 .user {
-  width: 100%;
+  width: max-content;
   padding: 3px 8px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -138,7 +147,7 @@ h2 {
   height: 90%;
   max-width: 600px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px 10px;
   background-color: rgba(255, 194, 40, 0.4);
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
 }
